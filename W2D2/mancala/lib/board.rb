@@ -18,10 +18,21 @@ class Board
   end
 
   def valid_move?(start_pos)
-
+    if start_pos < 0 || start_pos > 13
+      raise "Invalid starting cup"
+    end
+    if @cups[start_pos].empty?
+      raise "Starting cup is empty"
+    end
   end
 
   def make_move(start_pos, current_player_name)
+    @cups[start_pos] = []
+    4.times do 
+      @cups[start_pos+1..-1].each_with_index do |cup, idx|
+        cup << :stone unless idx 
+      end
+    end
   end
 
   def next_turn(ending_cup_idx)
@@ -37,6 +48,7 @@ class Board
   end
 
   def one_side_empty?
+
   end
 
   def winner
