@@ -23,7 +23,7 @@ describe Dessert do
     end 
 
     it "raises an argument error when given a non-integer quantity"
-      dessert.quantity.should_not be_non-integer
+      expect{ dessert.quantity = "s" }.to raise_error(ArgumentError)
     end
 
   describe "#add_ingredient" do
